@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="form" method="post" action="/results">
+        <div>
+            <label>Name</label>
+            <input name="Name">
+        </div>
+        <div >
+            <label>Gender</label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="female"
+                    checked="">female
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="male">male
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="other">other
+            </label>
+
+        </div>
+        <div>
+            <label>Pregnancies*</label>
+            <input name="Pregnancies" required>
+
+            <!-- <select name="Pregnancies"  required>
+                <option value selected></option>
+                <option value="Dr.">Dr.</option>
+                <option value="Miss.">Miss.</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Prof.">Prof.</option>
+            </select> -->
+        </div>
+        <div>
+            <label>Glucose</label>
+            <input name="Glucose"required>
+
+        </div>
+        <div>
+            <label>BloodPressure</label>
+            <input name="BloodPressure" required>
+
+        </div>
+        <div >
+            <label for="SkinThickness">SkinThickness</label>
+            <input name="SkinThickness" required>
+
+        </div>
+        <div >
+            <label for="Insulin">Insulin</label>
+            <input name="Insulin" required>
+
+        </div>
+
+        <div>
+            <label>BMI</label>
+            <input name="BMI" type="text"  required>
+
+        </div>
+        <div>
+            <label>DiabetesPedigreeFunction</label>
+            <input name="DiabetesPedigreeFunction" required>
+
+        </div>
+        <div>
+            <label>Age</label>
+            <input name="Age" required>
+
+        </div>
+        <input type="submit" name="submit" value="Submit">
+
+    </form>
+
+    {% include 'resultform.html' %}
+</body>
+
+<script>
+    const genders = document.querySelector('.gender')
+
+genders.forEach((gender,idx) => {
+    gender.addEventListener('click', () => (idx))
+})
+
+function pregencies(idx){
+    if(value=='male'){
+        style.display = "none"
+    }
+}
+
+</script>
+
+</html>

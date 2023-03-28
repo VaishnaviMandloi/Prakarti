@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APPOINMENT PRAKRATI</title>
+    <!-- Bootstrap Styles-->
+    <link href="{{ url_for('static', filename='assets/css/bootstrap.css')}}" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='user/appoinment.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='user/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="/logout"><i class="fa fa-home"></i> Logout</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        <div id="page-wrapper">
+            <div class="app-div" id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            APPOINMENT <small></small>
+                        </h1>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+
+                    <div class="col-md-5 col-sm-5">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                PERSONAL INFORMATION
+                            </div>
+                            <div class="panel-body">
+                                <form name="form" method="post" action="/appoinment">
+                                    <div class="form-group">
+                                        <label>Title*</label>
+                                        <select name="title" class="form-control" required>
+                                            <option value selected></option>
+                                            <option value="Dr.">Dr.</option>
+                                            <option value="Miss.">Miss.</option>
+                                            <option value="Mr.">Mr.</option>
+                                            <option value="Mrs.">Mrs.</option>
+                                            <option value="Prof.">Prof.</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input name="fname" class="form-control" required>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input name="lname" class="form-control" required>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input name="email" type="email" class="form-control" value="{{session.email}}"
+                                            readonly>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>First Appoinment</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="first_appoinment" value="First Consultation"
+                                                checked="">First Consultation
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="first_appoinment"
+                                                value="Further Consultation">Further Consultation
+                                        </label>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input name="phone" type="text" class="form-control" required>
+
+                                    </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    APPOINMENT INFORMATION
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label>Slot Timimg</label>
+                                        <select name="slot" class="form-control" required>
+                                            <option value selected></option>
+                                            <option value="Morning slot">MORNING SLOT (8:00 a.m. to 12:00 p.m.)</option>
+                                            <option value="Afternoon slot">AFTERNOON SLOT (12:00 p.m. to 4:00 p.m.)
+                                            </option>
+                                            <option value="evening slot">EVENING SLOT (4:00 p.m. to 8:00 p.m.)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Service Type</label>
+                                        <select name="service_type" class="form-control" required>
+                                            <option value selected></option>
+                                            <option value="Single">Panchkarma</option>
+                                            <option value="Double">Nasya</option>
+                                            <option value="Triple">Vasti</option>
+                                            <option value="Quad">Swedan</option>
+                                            <option value="Other">Other</option>
+
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Choose Doctor</label>
+                                        <select name="doctor" class="form-control" required>
+                                            <option value selected></option>
+                                            <option value="Dr. Divyani Mandloi">Dr. Divyani Mandloi</option>
+                                            <option value="Dr. Vicky Chodhary">Dr. Vicky Chodhary</option>
+                                        </select>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label>Date of Visit</label>
+                                        <input name="date" type="date" class="form-control">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Other Prefer Date</label>
+                                        <input name="date2" type="date" class="form-control">
+                                    </div>
+
+                                    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 col-sm-12">
+                                </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+
+    <footer class="confooter">
+        <div class="icon">
+            <a href="#" class="fa fa-star"></a>
+            <a href="#" class="fa fa-envelope"></a>
+            <a href="#" class="fas fa-comment"></a>
+        </div>
+        <p>Prakrati is a medical website of clinic . Which keep you Healthy and Happy :)</p>
+        <div class="footerbottom">
+            <p>copyright &copy;2022 <a href="#">Prakrati</a></p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='user/script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+#card{
+    background-image: url(https://media.istockphoto.com/id/946765682/photo/herb-and-spice-abstract-border.jpg?s=612x612&w=0&k=20&c=lEzi3vqjKcGJhewAZQLvkdQGgLcLP4hiRfOY5UEGI6U=);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    padding: 5vh;
+    color: aliceblue;
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.logtext{
+    font-size: 30px;
+}
+
+#book {
+    background-image: url("https://www.appointy.com/en-gb/online-booking-software/wp-content/uploads/2020/10/Customer-scheduling-an-online-appointment.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 70vh;
+    padding: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+}
+
+#contact {
+    background-image: url("signup_bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+#c-div {
+    padding: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}

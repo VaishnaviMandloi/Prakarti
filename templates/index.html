@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block link %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='user/index.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock link %}
+
+{% block title %}Home{% endblock title %}
+{% block body %}
+<!-- //header -->
+
+<div>
+	<p><a href="/predict"> diabetes</a></p>
+</div>
+
+
+<!-- ui cards -->
+<div class="uicards">
+    <h1>FIND A CLINIC !!</h1>
+    <div class="container">
+        <div class="panel " style="background-image: url('https://media.istockphoto.com/id/697805638/photo/indian-ayurvedic-dietary-supplement-called-chyawanprash-chyavanaprasha-is-a-cooked-mixture-of.jpg?s=612x612&w=0&k=20&c=yflo85roLuqA8PAUzkz_eLdPAgihwTcOO4ZIxgL9RtE=')">
+            <h3><a href="/login">BOOK APPOINMENT</a></h3>
+        </div>
+        <div class="panel " style="background-image: url('https://media.istockphoto.com/id/855014602/photo/turmeric-powder-turmeric-in-mortar-grinder-drugs-and-ingredient-herbs-on-wooden-background.jpg?s=612x612&w=0&k=20&c=LOJOCwVBgl96mq7bx6FoCIN3WHO4N1QoBgYWX-7ZlFE=')">
+            <h3><a href="/login">GET A CALL FROM US</a></h3>
+        </div>
+        <div class="panel " style="background-image: url('https://media.istockphoto.com/id/1221022583/photo/ayurvedic-copper-neti-pot.jpg?s=612x612&w=0&k=20&c=eIRJ7u_30nciN3qjrlfBR8zLGYlB3J2jdrNXzDxOgLs=')">
+            <h3><a href="/funlearn">FUN & LEARN</a></h3>
+        </div>
+        <div class="panel " style="background-image: url('https://media.istockphoto.com/id/1182598180/vector/ayurveda-vata-pitta-kapha.jpg?s=612x612&w=0&k=20&c=WAs1W9sZ9k-MoWSvIgg2KG69BkSH-dwK1xtOXVjHnRA=')">
+            <h3><a href="/">WHY AYURVEDA</a></h3>
+        </div>
+        <div class="panel " style="background-image: url('https://media.istockphoto.com/id/488119648/photo/happy-young-female-botanist-collecting-sample-of-leafs-in-nature.jpg?s=612x612&w=0&k=20&c=QDJ_RRtwEDGt4lIVdipG_cRGYvpM0m2a-vU7W5TAL60=')">
+            <h3><a href="/">WHY Prakrati</a></h3>
+        </div>
+    </div>
+</div>
+<!-- /ui cards -->
+    
+
+
+<!--services-->
+<!-- <div class="advantages">
+	<div class="container">
+		<div class="advantages-main">
+			<h3 class="title-w3-agileits">Our Services</h3>
+			<div class="advantage-bottom">
+				<div class="col-md-6 advantage-grid left-w3ls wow bounceInLeft" data-wow-delay="0.3s">
+					<div class="advantage-block ">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
+						<h4>Stay First, Pay After! </h4>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
+							et voluptates.</p>
+						<p><i class="fa fa-check" aria-hidden="true"></i>Decorated room, proper air conditioned</p>
+						<p><i class="fa fa-check" aria-hidden="true"></i>Private balcony</p>
+
+					</div>
+				</div>
+				<div class="col-md-6 advantage-grid right-w3ls wow zoomIn" data-wow-delay="0.3s">
+					<div class="advantage-block">
+						<i class="fa fa-clock-o" aria-hidden="true"></i>
+						<h4>24 Hour Restaurant</h4>
+						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
+							et voluptates.</p>
+						<p><i class="fa fa-check" aria-hidden="true"></i>8 a.m. to 8 p.m. Timing</p>
+						<p><i class="fa fa-check" aria-hidden="true"></i>12-hour Concierge service</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!--//services-->
+
+<div id="connect" class="col-lg-6 col-md-6 col-sm-6 contact-w3-agile1" data-aos="flip-right" style="background-image: url('/static/user/signup_bg.jpg');  height: 100vh; width: 100vw ; background-repeat: no-repeat ; background-size: cover ;">
+	<h4 class="connect">Connect With Us</h4>
+	<p class="contact-agile1"><strong>Phone :</strong>8356783456</p>
+	<p class="contact-agile1"><strong>Email :</strong> <a href="mailto:name@example.com">contactus@prakrati.com</a></p>
+	<p class="contact-agile1"><strong>Address :</strong> INDORE , Madhaya Pradesh</p>
+
+	<!-- <div class="social-bnr-agileits footer-icons-agileinfo">
+		<ul class="social-icons3">
+			<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+			<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+			<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+
+		</ul>
+
+		<div class="clearfix"></div> -->
+	</div>
+	</section>
+
+	
+	<script src="{{ url_for('static', filename='user/index.js') }}"></script>
+
+	{% endblock body %}

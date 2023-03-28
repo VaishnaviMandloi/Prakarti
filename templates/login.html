@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block link %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='user/userlogin.css') }}">
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> -->
+
+
+{% endblock link %}
+    
+
+    {% block title %}LOGIN{% endblock title %}
+
+
+
+{% block body %}
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+
+                                    <div class="text-center">
+                                        <img    src="data:image/png;base64,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">
+
+                                        <h4 class="mt-1 mb-5 pb-1">Welcome to Prakrati !!</h4>
+
+                                    </div>
+                                            <form action="{{ url_for('login') }}" method="post">
+                                                {% if mesage is defined and mesage %}
+                                                <div class="alert alert-warning" style="background-color: #d3f9a2;color: black;">{{ mesage }}</div>
+                                                {% endif %}
+                                                <p>Please login to your account</p>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="email" class="form-control" id="form2Example11"
+                                                        name="email" placeholder="Enter email">
+                                                    <label class="form-label" for="email">Email</label>
+                                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="password" class="form-control" id="password"
+                                                        name="password" placeholder="Enter password" name="pswd">
+                                                    <label class="form-label" for="pwd">Password</label>
+                                                </div>
+
+                                                <div class="text-center pt-1 mb-5 pb-1">
+                                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" style="background: linear-gradient(to right, #96ee24, #36d864, #73dd36, #3eef16);">Login</button>
+
+                                                    <a class="text-muted" href="#!">Forgot password?</a>
+                                                </div>
+
+                                                <div class="d-flex align-items-center justify-content-center pb-4">
+                                                        <p class="mb-5 pb-lg-2" style="color: #11e365;">Don't have an account? <a href="{{url_for('register')}}"
+                                                          style="color: #2ff70b;">Register here</a></p>
+                                                      
+                                                  </div>      
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                        <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                            <h4 class="mb-4">We are more than just a company</h4>
+                                            <p class="small mb-0"><big>SIGN-UP FOR EXPLORING MORE FEATURES <br> such as <br> BOOKING APPOINMENT <br>    GET A CALL FROM US <br> SEND FEEDBACK</big>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+{% endblock body %}
