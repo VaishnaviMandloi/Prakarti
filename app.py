@@ -11,7 +11,7 @@ import re
 
 import pickle
 import numpy as np
-from sklearn.preprocessing import StandardScaler
+
 
 app = Flask(__name__)
 
@@ -287,33 +287,34 @@ def results():
     form = request.form
     if request.method == 'POST':
 
-        loaded_model = pickle.load(open('diabetes_training_model.sav', 'rb') )
-        
-        Pregnancies   = request.form.get('Pregnancies')
-        Glucose   = request.form.get('Glucose')
-        BloodPressure   = request.form.get('BloodPressure')
-        SkinThickness   = request.form.get('SkinThickness')
-        Insulin    = request.form.get('Insulin')
-        BMI   = request.form.get('BMI')
-        DiabetesPedigreeFunction   = request.form.get('DiabetesPedigreeFunction')
-        Age   = request.form.get('Age')
+        loaded_model = pickle.load(open('D:/vaishnavi/Minor Project/Prakarti/templates/diabetes_training_model.sav', 'rb') )
+
+        Name = request.form.get('Name')
+        Gender = request.form.get('gender')
+
+        Pregnancies   = (int)(request.form.get('Pregnancies'))
+        Glucose   = (int)(request.form.get('Glucose'))
+        BloodPressure   = (int)(request.form.get('BloodPressure'))
+        SkinThickness   = (int)(request.form.get('SkinThickness'))
+        Insulin    = (int)(request.form.get('Insulin'))
+        BMI   = (float)(request.form.get('BMI'))
+        DiabetesPedigreeFunction   = (float)(request.form.get('DiabetesPedigreeFunction'))
+        Age   = (int)(request.form.get('Age'))
 
         input_data = (Pregnancies, Glucose,BloodPressure,SkinThickness,Insulin,BMI, DiabetesPedigreeFunction,Age)
 
-# chaning input_data to numpy array
+        # chaning input_data to numpy array
         input_data_as_numpy_array = np.array(input_data)
 
-# reshaping array as we are predicting only one value
+        # reshaping array as we are predicting only one value
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
-
-# standardize the input data
 
         predicted_result = loaded_model.predict(input_data_reshaped)
         if(predicted_result[0] ==0):
-            prediction ='non-diabetic person'  
+            prediction ='non-diabetic person'
         else:
             prediction ='diabetic person'
-    return render_template('predictorform.html' , prediction=prediction)
+    return render_template('predictorform.html' , prediction=prediction , Name=Name , gender=Gender , Pregnancies = Pregnancies, Glucose =  Glucose,BloodPressure = BloodPressure ,SkinThickness = SkinThickness ,Insulin =Insulin ,BMI = BMI, DiabetesPedigreeFunction =DiabetesPedigreeFunction ,Age = Age)
         
 
 if __name__ == '__main__':
