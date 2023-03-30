@@ -318,7 +318,49 @@ def results():
         else:
             prediction ='diabetic person'
     return render_template('diabeticPredictorform.html' , prediction=prediction , Name=Name , gender=Gender , Pregnancies = Pregnancies, Glucose =  Glucose,BloodPressure = BloodPressure ,SkinThickness = SkinThickness ,Insulin =Insulin ,BMI = BMI, DiabetesPedigreeFunction =DiabetesPedigreeFunction ,Age = Age)
-        
+
+ @app.route('/predictheartdefect')
+def predict_heartdefect():
+    return render_template('heartdefectPredictorform.html')
+
+@app.route('/heartdefectResults' , methods=['POST'])
+def results():
+    form = request.form
+    if request.method == 'POST':
+
+        loaded_model = pickle.load(open('D:/vaishnavi/Minor Project/Prakarti/templates/heartdefect_training_model.sav', 'rb') )
+
+        Name = request.form.get('Name')
+
+        age   = (int)(request.form.get('age'))
+        sex   = (int)(request.form.get('sex'))
+        cp   = (int)(request.form.get('cp'))
+        trestbps   = (int)(request.form.get('trestbps'))
+        chol    = (int)(request.form.get('chol'))
+        fbs   = (int)(request.form.get('fbs'))
+        restecg   = (int)(request.form.get('restecg'))
+        thalach   = (int)(request.form.get('thalach'))
+        exang = (int)(request.form.get('exang'))
+        oldpeak = (float)(request.form.get('oldpeak'))
+        slope = (int)(request.form.get('slope'))
+        ca = (int)(request.form.get('ca'))
+        thal = (int)(request.form.get('thal'))
+
+        input_data = (age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal)
+
+        # chaning input_data to numpy array
+        input_data_as_numpy_array = np.array(input_data)
+
+        # reshaping array as we are predicting only one value
+        input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+
+        predicted_result = loaded_model.predict(input_data_reshaped)
+        if(predicted_result[0] ==0):
+            prediction ='Your heart is healthy'
+        else:
+            prediction ='Your heart have some defect'
+    return render_template('heartdefectPredictorform.html' , prediction=prediction , Name=Name , age=age,sex=sex,cp=cp,trestbps=trestbps,chol=chol,fbs=fbs,restecg=restecg,thalach=thalach,exang=exang,oldpeak=oldpeak,slope=slope,ca=ca,thal=thal)
+       
 
 if __name__ == '__main__':
 #     Session = sessionmaker(bind=engine)
