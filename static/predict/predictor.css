@@ -1,0 +1,61 @@
+.text-left {
+    text-align: left;
+    color: rgb(30, 106, 44);
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 70%;
+    margin: 0 2vw;
+    padding: 0 2vw;
+}
+
+.main{
+    color: #4e8958;
+    text-shadow: 0 0 10px rgba(125, 234, 136, 0.966);
+}
+
+.predict{
+    width: 90%;
+    margin: 1vh 2vw;
+    padding: 1vh 2vw;
+}
+
+.diapredict{
+        background-image: url("/static/img/diabeticIndeximg.jpg");
+    background-position: right ;
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+
+.btn{
+    height: 20vh;
+    margin: 2vh 2vw;
+    padding: 2vh 2vw;
+}
+
+.app{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px 12px;
+    margin: 32px 6px;
+    text-decoration: none;
+    font-size: 15px;
+    background-color:#4e8958 ;
+    border-radius: 22px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: box-shadow .3s ease-out;
+}
+
+.app .icon {
+    display: none;
+}
+
+
+.app:hover{
+    box-shadow: 8px 8px #4e8958;
+    background-color: rgb(255, 255, 255);
+    color: #4e8958;
+    border: 2px solid #4e8958;
+
+}

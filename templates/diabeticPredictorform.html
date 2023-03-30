@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='predict/diabetesPredictor.css') }}">
+{% endblock link %}
+
+
+{% block title %}Diabetic Predictor{% endblock title %}
+
+
+
+{% block body %}
+<div class="section" id="formSec">
+    <p>Let's Take a diabetes Check !!</p>
+    <form name="form" method="post" action="/diabeticResults">
+    <div>
+        <div class="form-content">
+            <div class="dform-content">
+                <label>Name</label>
+                <input name="Name">
+            </div>
+            <div class="dform-content">
+                <label>Gender</label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="female" checked="">female
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="male">male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="other">other
+                </label>
+            </div>
+
+        </div>
+        <div class="form-content">
+            <div class="dform-content">
+                <label>Pregnancies</label>
+                <input type="number" name="Pregnancies" required>
+            </div>
+            <div class="dform-content">
+                <label>Glucose</label>
+                <input type="number" name="Glucose" required>
+
+            </div>
+            <div class="dform-content">
+                <label>Blood Pressure</label>
+                <input type="number" name="BloodPressure" required>
+
+            </div>
+            <div class="dform-content">
+                <label for="SkinThickness">Skin Thickness</label>
+                <input type="number" name="SkinThickness" required>
+
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="dform-content">
+                <label for="Insulin">Insulin</label>
+                <input type="number" name="Insulin" required>
+
+            </div>
+
+            <div class="dform-content">
+                <label>BMI</label>
+                <input type="number" step="any" name="BMI" type="text" required>
+
+            </div>
+            <div class="dform-content">
+                <label>Diabetes Pedigree Function</label>
+                <input type="number" step="any" name="DiabetesPedigreeFunction" required>
+
+            </div>
+            <div class="dform-content">
+                <label>Age</label>
+                <input type="number" name="Age" required>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-content">
+    <input class="btn" id="sbtn" type="submit" name="submit" value="Submit">
+    </div>
+</div>
+</form>
+</div>
+<div class="section" id="resultsec">
+{% include 'diabeticResultform.html' %}
+</div>
+<script>
+    const genders = document.querySelector('.gender')
+
+    genders.forEach((gender, idx) => {
+        gender.addEventListener('click', () => (idx))
+    })
+
+    function pregencies(idx) {
+        if (value == 'male') {
+            style.display = "none"
+        }
+    }
+
+</script>
+
+{% endblock body %}

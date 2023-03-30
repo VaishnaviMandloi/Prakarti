@@ -1,0 +1,201 @@
+
+.section{
+    height: 55vh;
+    width: 100%;
+}
+
+
+#formSec{
+    background-image: url("https://img.freepik.com/premium-photo/glucometer-with-test-strip-blue-space-space-text-selective-focus_96826-329.jpg?size=626&ext=jpg&ga=GA1.1.599619938.1680098910&semt=ais");
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#resultsec{
+    height: 10vh;
+}
+
+p{
+    color: #324960;
+    text-shadow: 0 0 10px cornsilk;
+    font-size: large;
+}
+
+form{
+    width: 60%;
+    padding: 5vh;
+    min-height: 60vh;
+}
+
+.form-content{
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dform-content{
+    padding: 0 10px;
+}
+
+label{
+    color: rgb(230, 242, 255);
+    text-shadow: 0 0 10px rgb(116, 211, 223);
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btn{
+    padding: 10px 12px;
+    margin: 12px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 22px;
+    font-size: 15px;
+
+}
+
+#sbtn{
+    background-color: rgb(255, 255, 255);
+    color: rgb(20, 47, 120);
+
+}
+
+.btn:hover{
+    transition: box-shadow .3s ease-out;
+    border: none;
+}
+
+#sbtn:hover{
+    box-shadow: 8px 8px rgba(253, 253, 253, 0.948);
+    background-color: rgb(67 136 211);
+    color: rgb(255, 255, 255);
+
+}
+
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 15vh 0 0 0;
+    
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10vh 10vw;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+table{
+    width: 100%;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.intr td, .inth th {
+    text-align: center;
+    padding: 8px;
+}
+
+.intr td {
+    border: 1px solid #4e8958;
+    font-size: 12px;
+    background-color: rgba(240, 255, 255, 0.584);
+}
+
+.inth th {
+    color: #4e8958;
+    background: #dddcdcc3;
+    border: 1px solid #4e8958;
+}
+
+
+.inth th:nth-child(odd) {
+    color: #ffffff;
+    background: #4e8958;
+}
+
+.th1{
+    background-color:#ffffff ;
+    color:#4e8958 ;
+    border: 1px solid #4e8958;
+}
+
+.text-center{
+    text-align: center;
+    color: rgb(30, 106, 44);
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 10%;
+    margin: 0 15vh;
+    padding: 0 15vh;
+}
+
+.main{
+    color: #4e8958;
+    text-shadow: 0 0 10px rgba(125, 234, 136, 0.966);
+}
+
+.imgP{
+        background-image: url("/static/img/Ayurveda-Transparent-Image.png");
+    background-position: right ;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 90%;
+    margin: 1vh 15vh;
+    padding: 1vh 15vh;
+}
+
+.appdiv{
+    display: flex;
+    justify-content: center;
+}
+
+.app{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px 12px;
+    margin: 12px 6px;
+    text-decoration: none;
+    font-size: 15px;
+    background-color:#4e8958 ;
+    border-radius: 22px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: box-shadow .3s ease-out;
+}
+
+.app .icon {
+    display: none;
+}
+
+
+.app:hover{
+    box-shadow: 8px 8px #4e8958;
+    background-color: rgb(255, 255, 255);
+    color: #4e8958;
+    border: 2px solid #4e8958;
+
+}

@@ -1,0 +1,57 @@
+/* #formSec{
+    background-image: url("https://img.freepik.com/premium-photo/glucometer-with-test-strip-blue-space-space-text-selective-focus_96826-329.jpg?size=626&ext=jpg&ga=GA1.1.599619938.1680098910&semt=ais");
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    width: 60%;
+    padding: 10vh;
+    min-height: 60vh;
+}
+
+.form-content{
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dform-content{
+    padding: 0 10px;
+}
+
+label{
+    color: rgb(230, 242, 255);
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#sbtn{
+    background-color: rgb(255, 255, 255);
+    color: rgb(20, 47, 120);
+    padding: 10px 12px;
+    margin: 12px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 22px;
+    font-size: 15px;
+
+}
+
+#sbtn:hover{
+    box-shadow: 8px 8px rgba(253, 253, 253, 0.948);
+    background-color: rgb(67 136 211);
+    color: rgb(255, 255, 255);
+    transition: box-shadow .3s ease-out;
+    border: none;
+} */

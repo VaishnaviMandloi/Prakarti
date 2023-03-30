@@ -277,12 +277,15 @@ def delete_reject(id):
     db.session.commit()
     return redirect("/rejected")
 
+@app.route('/predictor')
+def predictor():
+    return render_template('Predictor.html')
 
-@app.route('/predict')
+@app.route('/predictdiabetes')
 def predict_diabetic():
-    return render_template('predictorform.html')
+    return render_template('diabeticPredictorform.html')
 
-@app.route('/results' , methods=['POST'])
+@app.route('/diabeticResults' , methods=['POST'])
 def results():
     form = request.form
     if request.method == 'POST':
@@ -314,7 +317,7 @@ def results():
             prediction ='non-diabetic person'
         else:
             prediction ='diabetic person'
-    return render_template('predictorform.html' , prediction=prediction , Name=Name , gender=Gender , Pregnancies = Pregnancies, Glucose =  Glucose,BloodPressure = BloodPressure ,SkinThickness = SkinThickness ,Insulin =Insulin ,BMI = BMI, DiabetesPedigreeFunction =DiabetesPedigreeFunction ,Age = Age)
+    return render_template('diabeticPredictorform.html' , prediction=prediction , Name=Name , gender=Gender , Pregnancies = Pregnancies, Glucose =  Glucose,BloodPressure = BloodPressure ,SkinThickness = SkinThickness ,Insulin =Insulin ,BMI = BMI, DiabetesPedigreeFunction =DiabetesPedigreeFunction ,Age = Age)
         
 
 if __name__ == '__main__':

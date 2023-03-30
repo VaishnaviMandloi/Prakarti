@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+
+{% block link %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='predict/predictor.css') }}"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock link %}
+
+{% block title %}Home{% endblock title %}
+{% block body %}
+
+<div class="predict diapredict">
+	<div class="text-left">
+		<h1 class="main">Disease Predictor </h1>
+		<p>Use our disease predictor and take required actions for Your Health before it too late</p>
+		<hr>
+
+		<h3 class="main">दुनियाभर में क्या है डायबिटीज की स्थिति?</h3>
+		<p>दुनियाभर में लगातार डायबिटीज के मरीजों की संख्या बढ़ती जा रही है. डब्ल्यूएचओ की एक रिपोर्ट बताती है कि  साल 1980 के दौरान दुनिया में 108 मिलियन मरीज डायबिटीज के थे, लेकिन 2014 में यह संख्या 422 मिलियन हो गई थी | इसके बाद से ये कम कमाई या मिडिल इनकम वाले देशों में डायबिटीज के मरीजों की संख्या लगातार बढ़ती जा रही है. दरअसल, डायबिटीज की वजह से शरीर के कई हिस्सों पर असर पड़ता है और कई बार ये मौत का कारण बनते हैं | जैसे 2019 में 2 मिलियन यानी करीब 20 लाख लोगों की मौत का कारण डायबिटीज और किडनी था | <br>
+
+		साल 2019 में डायबिटीज की वजह से सीधे 1.5 मिलियन लोगों की मौत हो गई थी और इसमें 48 फीसदी मौतें 70 साल की उम्र से पहले हुई थी | इसके अलावा 46 हजार लोगों की मौत डायबिटीज की वजह से हुई किडनी की दिक्कत वजह से हुई और डायबिटीज की वजह से होने वाली सीने में दिक्कत की वजह से भी कई लोगों की मौत हो गई. बता दें कि डायबिटीज अक्सर अंधापन, किडनी फेलियर, हार्ट अटैक, स्ट्रोक आदि का कारण बनता है |</p>
+		<h3 class="main">भारत की क्या है कहानी?</h3>
+		<p>ये तो आपने जान लिया कि दुनिया भर में डायबिटीज की संख्या काफी ज्यादा है, लेकिन क्या आप जानते हैं भारत की स्थिति भी काफी भयावह है | डायबिटीज के मरीजों के मामले में भारत का दूसरा स्थान है | चीन के बाद भारत में सबसे ज्यादा डायबिटीज के मरीज है | बता दें कि भारत में 77 मिलियन लोग डायबिटीज से परेशान हैं और इसमें 12.1 मिलियन लोग 65 साल से कम के हैं और माना जा रहा है कि 2045 तक ये आंकड़ा 27 मिलियन को पार कर जाएगा | कहा जा सकता है कि भारत में हर 11 लोगों में से एक शख्स को डायबिटीज है |<br>
+
+			अगर मरने वाले लोगों की संख्या की बात करें तो साल 2020 में 7 लाख ऐसे लोगों की मौत हुई है, जिनके डायबिटीज की वजह से किडनी, हाइपरग्लेसिमिया जैसे रोग हुए थे | वहीं, भारत में पुरुष और महिलाओं में लगभग बराबर मरीज हैं और सबसे ज्यादा 70 साल से ज्यादा उम्र के लोग इससे परेशान हैं | कई सर्वे में सामने आया है कि भारत में मौत का 7वां कारण अब डायबिटीज बनता जा रहा है और हर साल करीब 9-10 लाख इसकी वजह से अपनी जान गवां रहे हैं| </p>
+		<br>
+		<h3 class="main">Impact od Diabetes around the world !</h3>
+		<p>The number of people with diabetes rose from 108 million in 1980 to 422 million in 2014. Prevalence has been rising more rapidly in low- and middle-income countries than in high-income countries.<br>
+			Diabetes is a major cause of blindness, kidney failure, heart attacks, stroke and lower limb amputation.<br>
+			Between 2000 and 2019, there was a 3% increase in diabetes mortality rates by age.<br>
+			In 2019, diabetes and kidney disease due to diabetes caused an estimated 2 million deaths.<br>
+			A healthy diet, regular physical activity, maintaining a normal body weight and avoiding tobacco use are ways to prevent or delay the onset of type 2 diabetes.<br>
+			Diabetes can be treated and its consequences avoided or delayed with diet, physical activity, medication and regular screening and treatment for complications.</p>
+			<h3 class="main">Diabetes in India</h3>
+			<p>In India, there are estimated 77 million people above the age of 18 years are suffering from diabetes (type 2) and nearly 25 million are prediabetics (at a higher risk of developing diabetes in near future). More than 50% of people are unaware of their diabetic status which leads to health complications if not detected and treated early. Adults with diabetes have a two- to three-fold increased risk of heart attacks and strokes. Combined with reduced blood flow, neuropathy (nerve damage) in the feet increases the chance of foot ulcers, infection, and the eventual need for limb amputation. Diabetic retinopathy is an important cause of blindness and occurs as a result of long-term accumulated damage to the small blood vessels in the retina. Diabetes is among the leading causes of kidney failure.</p>
+	
+            <div class="btn"><a class="app" href="/predictdiabetes">Click here to predictic you are diabetic or not </a></div>
+        </div>
+</div>
+
+{% endblock body %}

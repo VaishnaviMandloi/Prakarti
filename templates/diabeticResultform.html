@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> -->
+
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='predict/diabeticResult.css') }}"> -->
+
+    {% if prediction|length == 0 %}
+
+    <p class="text-center">Fill information and press submit to see whether you are diabetic or not<br>
+    And get PRESCRIPTION accordingly !!<br>accuracy of this prediction is 77%<br></p>
+        {% else %}
+<div>
+        <h2>Your Entered Information</h2>
+    <div class="table-wrapper">
+    
+    <table class="f1-table">
+        <thead>
+            <tr>
+                <th class="th1" colspan="2">Personal Information</th>
+                <th class="th1" colspan="8">Basis on which Prediction is made</th>
+            </tr>
+            <tr class="inth">
+                <th>Name</th>
+                <th>Gender</th>
+                <th id="tdpreg">Pregnancies</th>
+                <th>Glucose</th>
+                <th>Blood Pressure</th>
+                <th>Skin Thickness</th>
+                <th>Insulin</th>
+                <th>BMI</th>
+                <th>Diabetes Pedigree Function</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="intr">
+                <td>{{Name}}</td>
+                <td>{{gender}}</td>
+                <td>{{Pregnancies}}</td>
+                <td>{{Glucose}}</td>
+                <td>{{BloodPressure}}</td>
+                <td>{{SkinThickness}}</td>
+                <td>{{Insulin}}</td>
+                <td>{{BMI}}</td>
+                <td>{{DiabetesPedigreeFunction}}</td>
+                <td>{{Age}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <p class="text-center main"> <big> You are a {{prediction}} !!</big></p>
+
+    {% if (prediction =='non-diabetic person') %}
+    <p class="text-center">You are more likely to develop type 2 diabetes if you are age 45 or older, have a family history of diabetes, or are overweight or have obesity. Diabetes is more common in people who are African American, Hispanic/Latino, American Indian, Asian American, or Pacific Islander.<br>Do's to maintain diabetes free life : High fiber diet ,Grains: Yava (barley), Godhuma (wheat), Shali (saathi rice), Kodrava (grain variety), Bajara. Pulses
+        Vegetables (bitter and astringent): Methika (fenugreek), Patola (pointed gourd), Karvellaka (bitter gourd), Tanduleyaka (choulayee), Vastukam (bathuva), Shobhanjana (drum stick), Rasona (garlic), Kadali (unripe banana).
+        Fruits: Jambu (jamun), Amla (goose berry), Kapittha (monkey fruit), Dadima (pomegranate).
+        Seeds: Methi (fenugreek), Kamala (Nelumbo nicifera), Utpala (Nymphoea alba).
+        Others natural products and spices: Madhu (pure natural honey), Madhudaka (honey + water), Atasi (flax seed) oil, Sarshapa (mustard) oil, Dhani (pop corn of jawar), Laja/Murmura (puffed rice), Maricha (black pepper), Saindhava (rock salt), Hingu (asafoetida), Haridra (turmeric), Ardraka (ginger).
+        Do regular physical activities, brisk walk and maintain ideal body weight.
+        Yoga Asana- Vakrasana, Suryanamaskar, Agnisar prayanama, Kapalbhati kriya, Bhramari pranayama, etc.<br><br>बहुत अधिक फैट, हाई बीपी, समय पर ना सोना, सुबह देर तक सोना, बहुत अधिक नशा करना और निष्क्रिय जीवनशैली के कारण भी होती है या गलत खान-पान के कारण भी हो सकता है।<br>उचित परहेज और व्यायाम की मदद से आप काफी हद तक डायबिटीज को नियंत्रित कर सकते हैं। आइये जानते हैं किन चीजों के सेवन से परहेज करना चाहिए। कुछ फलों में शर्करा की उच्च मात्रा होने के कारण इन फलों को डायबिटीज के रोगियों को नहीं खाना चाहिए। जैसे- अंगूर, चेरी, अनानास, केला, सूखे मेवे और मीठे फलों का जूस भी नहीं लेना चाहिए।<br><br><big>We are happy for you that you dont't have diabetes . And as precaution is always better than cure , So for continuing your healthy journey you can take some tonics</big>
+    </p>
+    <div class="imgP">
+        <img  src="{{ url_for('static', filename='img/prescriptionPadnondiabetic.png')}}" alt="1. करेला स्वरस /BitterGourd Juice/Karela Juice ( 15ml , 2 times a day )
+2. मेथी चूर्ण /Fenugreek seeds/Methi Powder ( 1 teaspoonful (around 5gm) , 2 times a day )
+3. आंवला स्वरस /Indian gooseberry/Amla Juice ( 15ml juice + 15ml water , 2 times a day )">
+
+    </div>
+    {% else %}
+    <p class="text-center">Over time, high blood glucose levels can damage the body's organs. Possible long-term effects include damage to large (macrovascular) and small (microvascular) blood vessels, which can lead to heart attack, stroke, and problems with the kidneys, eyes, gums, feet and nerves.<br>Proper lifestyle management along with intake of pacifying the effects of affecting doshas, boosting metabolism and clearing toxins from the body, helps in reversal of the diabetic condition.<br><br>डायबिटीज एक पुरानी बीमारी है, जो तब होती है जब शरीर में ब्लड शुगर लेवल बढ़ जाता है और शरीर पर्याप्त इंसुलिन बनाना बंद कर देता है।<br>मधुमेह के लिए आयुर्वेदिक जड़ी-बूटियों के साथ जीवनशैली में कुछ बदलाव आपको अपने ब्लड शुगर लेवल को बनाए रखने और विनियमित करने में मदद कर सकते हैं।<br><br><big class="main">As you are detected diabetic , for being healthy again we gives you a short prescription</big></p>
+    <div class="imgP">
+        <img  src="{{ url_for('static', filename='img/prescriptionPadDiabetic.png')}}" alt="1. निशामलकी /Nishamakali ( 1 teaspoonful , 2 times a day )
+2. करेला स्वरस /BitterGourd Juice/Karela Juice ( 15ml , 2 times a day )
+3. मेथी चूर्ण /Fenugreek seeds/Methi Powder ( 1 teaspoonful (around 5gm) , 2 times a day )
+4. आंवला स्वरस /Indian gooseberry/Amla Juice ( 15ml juice + 15ml water , 2 times a day )
+5. त्रिफला चूर्ण /Triphla Powder ( 1 teaspoonful (3gm) , 2 times a day ) ">
+    <p class="text-center main">We advice you to consult our doctor for Proper prescription according to your condition .</p>
+    <div class="appdiv"><a class="btn app" href="/login">BOOK APPOINMENT</a></div>
+        
+    </div>
+    {% endif %}
+
+</div>
+        
+
+    {% endif %}
+<!-- </body>
+</html> -->
