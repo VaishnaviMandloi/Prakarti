@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='predict/heartdefectPredictor.css') }}">
+{% endblock link %}
+
+
+{% block title %}heart defect Predictor{% endblock title %}
+
+
+
+{% block body %}
+<div class="section" id="formSec">
+    <p>Let's Take a Heart Condition Check !!</p>
+    <form name="form" method="post" action="/diabeticResults">
+    <div>
+        <div class="form-content">
+            <div class="dform-content">
+                <label>Name</label>
+                <input name="Name">
+            </div>
+            
+        </div>
+        <div class="form-content">
+            <div class="dform-content">
+                <label>age</label>
+                <input type="number" name="age" required>
+            </div><div class="dform-content">
+                <label>Gender</label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="0" checked="">female
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="1">male
+                </label>
+            </div>
+
+            <div class="dform-content">
+                <label>chol</label>
+                <input type="number" name="chol" required>
+
+            </div>
+            <div class="dform-content">
+                <label>fbs</label>
+                <input type="number" name="fbs" required>
+
+            </div>
+            <div class="dform-content">
+                <label for="restecg">Skin Thickness</label>
+                <input type="number" name="restecg" required>
+
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="dform-content">
+                <label for="thalach">Insulin</label>
+                <input type="number" name="thalach" required>
+
+            </div>
+
+            <div class="dform-content">
+                <label>exang</label>
+                <input type="number" name="exang" type="text" required>
+
+            </div>
+            <div class="dform-content">
+                <label>oldpeak</label>
+                <input type="number" step="any" name="oldpeak" required>
+
+            </div>
+            <div class="dform-content">
+                <label>slope</label>
+                <input type="number" name="slope" required>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-content">
+    <input class="btn" id="sbtn" type="submit" name="submit" value="Submit">
+    </div>
+</div>
+</form>
+</div>
+<div class="section" id="resultsec">
+{% include 'diabeticResultform.html' %}
+</div>
+<script>
+    const genders = document.querySelector('.gender')
+
+    genders.forEach((gender, idx) => {
+        gender.addEventListener('click', () => (idx))
+    })
+
+    function pregencies(idx) {
+        if (value == 'male') {
+            style.display = "none"
+        }
+    }
+
+</script>
+
+{% endblock body %}
