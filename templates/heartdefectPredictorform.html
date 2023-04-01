@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block link %}
-<link rel="stylesheet" href="{{ url_for('static', filename='predict/heartdefectPredictor.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='predict/diabetesPredictor.css') }}">
 {% endblock link %}
 
 
@@ -10,71 +10,133 @@
 
 
 {% block body %}
-<div class="section" id="formSec">
+<div class="section" id="heartformSec">
     <p>Let's Take a Heart Condition Check !!</p>
-    <form name="form" method="post" action="/diabeticResults">
-    <div>
-        <div class="form-content">
-            <div class="dform-content">
+    <form name="form" method="post" action="/heartdefectResults">
+        <div class="heartform">
+            <div class="form-content">
                 <label>Name</label>
                 <input name="Name">
             </div>
             
-        </div>
-        <div class="form-content">
-            <div class="dform-content">
+            <div class="form-content">
                 <label>age</label>
                 <input type="number" name="age" required>
-            </div><div class="dform-content">
-                <label>Gender</label>
-                <label class="radio-inline">
-                    <input type="radio" name="gender" value="0" checked="">female
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="gender" value="1">male
-                </label>
             </div>
 
-            <div class="dform-content">
-                <label>chol</label>
+            <div class="form-content">
+                <label class="radiolabelsex">Sex  </label>
+                <label class="radio-inline">
+                    <input type="radio" name="sex" value="0" checked="">female
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="sex" value="1">male
+                </label>
+            </div>
+            <div class="form-content">
+                <label class="radiolabels">Type of chest pain  </label>
+                <label class="radio-inline">
+                    <input type="radio" name="cp" value="0" checked="">normal
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="cp" value="1">typical angina
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="cp" value="2">non — anginal pain
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="cp" value="3">atypical angina
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="cp" value="4">asymptotic
+                </label>
+
+            </div>
+            <div class="form-content">
+                <label> Resting blood pressure in mmHg</label>
+                <input type="number" name="trestbps" required>
+
+            </div>
+            <div class="form-content">
+                <label>Serum Cholestero in mg/dl</label>
                 <input type="number" name="chol" required>
 
             </div>
-            <div class="dform-content">
-                <label>fbs</label>
-                <input type="number" name="fbs" required>
+            <div class="form-content">
+                <label class="radiolabel">Fasting Blood Sugar  </label>
+                <label class="radio-inline">
+                    <input type="radio" name="fbs" value="1">Is more than 120mg/dl
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="fbs" value="0" checked="">otherwise
+                </label>
 
             </div>
-            <div class="dform-content">
-                <label for="restecg">Skin Thickness</label>
-                <input type="number" name="restecg" required>
+            <div class="form-content">
+                <label for="restecg" class="radiolabel">Resting ElectroCardioGraphic results </label>
+                <label class="radio-inline">
+                    <input type="radio" name="restecg" value="0" checked="">normal
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="restecg" value="1">ST-T wave abnormality
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="restecg" value="2">left ventricular hyperthrophy
+                </label>
 
             </div>
-        </div>
-        <div class="form-content">
-            <div class="dform-content">
-                <label for="thalach">Insulin</label>
+            <div class="form-content">
+                <label for="thalach">Max heart rate achieved</label>
                 <input type="number" name="thalach" required>
 
             </div>
 
-            <div class="dform-content">
-                <label>exang</label>
-                <input type="number" name="exang" type="text" required>
+            <div class="form-content">
+                <labe class="radiolabel"l>Exercise induced angina  </label>
+                <label class="radio-inline">
+                    <input type="radio" name="exang" value="1">yes
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="exang" value="0" checked="">no
+                </label>
 
             </div>
             <div class="dform-content">
-                <label>oldpeak</label>
-                <input type="number" step="any" name="oldpeak" required>
+                <label>ST depression induced by exercise relative to rest</label>
+                <input type="number" step="0.1" name="oldpeak" required>
 
             </div>
+            <div class="form-content heart">
+                <label class="radiolabel">Peak exercise ST segment  </label>
+                <label class="radio-inline">
+                    <input type="radio" name="slope" value="0" checked="">flat
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="slope" value="1">upsloping
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="slope" value="2">downsloping
+                </label>
+            </div>
             <div class="dform-content">
-                <label>slope</label>
-                <input type="number" name="slope" required>
+                <label>Number of major vessels</label>
+                <input type="number" name="ca" required>
+
+            </div>
+            <div class="form-content">
+                <label class="radiolabels">Thalassemia  </label>
+                <label class="radio-inline">
+                    <input type="radio" name="thal" value="1" checked="">normal
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="thal" value="2">fixed defect
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="thal" value="3">reversible defect
+                </label>
 
             </div>
         </div>
-    </div>
     <div class="form-content">
     <input class="btn" id="sbtn" type="submit" name="submit" value="Submit">
     </div>
@@ -82,7 +144,7 @@
 </form>
 </div>
 <div class="section" id="resultsec">
-{% include 'diabeticResultform.html' %}
+{% include 'heartdefectResultform.html' %}
 </div>
 <script>
     const genders = document.querySelector('.gender')

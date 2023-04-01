@@ -319,16 +319,16 @@ def results():
             prediction ='diabetic person'
     return render_template('diabeticPredictorform.html' , prediction=prediction , Name=Name , gender=Gender , Pregnancies = Pregnancies, Glucose =  Glucose,BloodPressure = BloodPressure ,SkinThickness = SkinThickness ,Insulin =Insulin ,BMI = BMI, DiabetesPedigreeFunction =DiabetesPedigreeFunction ,Age = Age)
 
- @app.route('/predictheartdefect')
+@app.route('/predictheartdefect')
 def predict_heartdefect():
     return render_template('heartdefectPredictorform.html')
 
 @app.route('/heartdefectResults' , methods=['POST'])
-def results():
+def heartresults():
     form = request.form
     if request.method == 'POST':
 
-        loaded_model = pickle.load(open('D:/vaishnavi/Minor Project/Prakarti/templates/heartdefect_training_model.sav', 'rb') )
+        heart_loaded_model = pickle.load(open('D:/vaishnavi/Minor Project/Prakarti/templates/heartdefect_training_model.sav', 'rb') )
 
         Name = request.form.get('Name')
 
@@ -354,7 +354,7 @@ def results():
         # reshaping array as we are predicting only one value
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
-        predicted_result = loaded_model.predict(input_data_reshaped)
+        predicted_result = heart_loaded_model.predict(input_data_reshaped)
         if(predicted_result[0] ==0):
             prediction ='Your heart is healthy'
         else:

@@ -1,0 +1,193 @@
+{% if prediction|length == 0 %}
+
+    <p class="text-center">Fill information and press submit to see whether you are diabetic or not<br>
+    And get PRESCRIPTION accordingly !!<br>accuracy of this prediction is 77%<br></p>
+        {% else %}
+<div>
+        <h2>Your Entered Information</h2>
+    <div class="table-wrapper">
+    
+    <table class="f1-table">
+        <thead>
+            <tr>
+                <th class="th1" colspan="1">Personal Information</th>
+                <th class="th1" colspan="14">Basis on which Prediction is made</th>
+            </tr>
+            <tr class="inth">
+                <th>Name</th>
+                <th>age</th>
+                <th>sex</th>
+                <th>Type of chest pain</th>
+                <th>Resting blood pressure in mmHg</th>
+                <th>Serum Cholestero in mg/dl</th>
+                <th>Fasting Blood Sugar</th>
+                <th>Resting ElectroCardioGraphic results</th>
+                <th>Max heart rate achieved</th>
+                <th>Exercise induced angina</th>
+                <th>ST depression induced by exercise relative to rest</th>
+                <th>Peak exercise ST segment</th>
+                <th>Number of major vessels (0–3) colored by flourosopy</th>
+                <th>Thalassemia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="intr">
+                <td>{{Name}}</td>
+                <td>{{age}}</td>
+                <td>{% if (sex==0) %}
+                    female    
+                    {% else %}
+                    male
+                {% endif %}
+                <td>{% if (cp==0) %}
+                        normal
+                {% elif (cp==1) %}
+                        typical angina
+                {% elif (cp==2) %}
+                        non — anginal pacifying
+                {% elif (cp==3) %}
+                        atypical angina
+                {% else %}
+                        asymptotic
+                    
+                {% endif %}</td>
+                <td>{{trestbps}}</td>
+                <td>{{chol}}</td>
+                <td>{% if (fbs==1) %}
+                    Is more than 120mg/dl
+                {% else %}
+                otherwise
+                {% endif %}</td>
+                <td>{% if (restecg==0) %}
+                    normal
+                {% elif (restecg==1) %}
+                    ST-T wave abnormality
+                {% else %}
+                    left ventricular hyperthrophy
+                {% endif %}</td>
+                <td>{{thalach}}</td>
+                <td>{% if (exang==1) %}
+                    yes
+                {% else %}
+                    no
+                {% endif %}</td>
+                <td>{{oldpeak}}</td>
+                <td>{% if (slope==0) %}
+                    flat
+                {% elif (slope==1) %}
+                    upsloping
+                {% else %}
+                    downsloping
+                    
+                {% endif %}</td>
+                <td>{{ca}}</td>
+                <td>{% if (thal==1) %}
+                    normal
+                {% elif (thal==2) %}
+                    fixed defect
+                {% else %}
+                    reversible defect
+                {% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <p class="text-center main"> <big> You are a {{prediction}} !!</big></p>
+
+    {% if (prediction =='Your heart is healthy') %}
+    <p class="text-center">हार्ट की बीमारी कैसे होती है-Causes Of Heart Disease<br>हर किसी को हृदय रोग होने का खतरा है। लेकिन कुछ लोगों को इन कारणों से दिल की बीमारियां ज्यादा होती हैं।
+
+        हाई कोलेस्ट्रॉल (high cholesterol)
+        
+        हाई ब्लड प्रेशर या हाई बीपी (high bp)
+        
+        मोटापा के कारण (heart disease due to obesity)
+        
+        स्मोकिंग से (smoking and heart valve problems)
+        
+        शारीरिक गतिविधियों में कमी (lack of physical activity)
+        
+        डाइट का सही न होना (lack of balanced diet)
+        
+        55 वर्ष से अधिक की महिला को (menopause and heart disease)
+        
+        खराब जीवनशैली के कारण (bad lifestyle and heart disease)
+        
+        तनाव (stress and heart disease)<br><br>दिल की बीमारी से कैसे बचे- How To Prevent Heart Disease<br>
+
+        दिल की बीमारियों से बचे रहने के लिए जरूरी है कि आप अपने जीवन में इन चीजों का ध्यान रखें। जैसे कि:
+        
+        1. स्वस्थ आहार खाएं (Eat a healthy diet)
+        
+        ज्यादा तली-भूनी चीजें न खाएं  (worst food for your heart)
+        ज्यादा नमक और चीनी न खाएं (heart-healthy foods to avoid)
+        ताजे फल, सब्जियां, और साबुत अनाज खाएं (foods for healthy heart)
+        डैश डाइट (DASH Diet) फॉलो करें।  ये हाई ब्लड प्रेशर और कोलेस्ट्रॉल को कम करने में (how to reduce cholesterol in hindi) मदद कर सकता है, जो आपके हृदय रोग के जोखिम को कम करेगा।
+        2. एक्टिव लाइफ स्टाइल फॉलो करें (physical activity for heart patients)
+        
+        3.अपने वजन को संतुलित करें (weight loss for heart patients)
+        
+        4 धूम्रपान छोड़ें और सेकेंड हैंड स्मोक (secondhand smoke)से दूर रहें  
+        
+        5. अपने कोलेस्ट्रॉल और ब्लड प्रेशर को नियंत्रित करें (tips for healthy heart)
+        
+        6.तनाव का प्रबंधन करें (stress management tips)
+        
+        7.दिल की बीमारी के लिए योग (yoga for healthy heart)<br><br><big>We are happy for you that your heart is healthy . And as precaution is always better than cure , So for continuing your healthy journey you can take some tonics</big>
+    </p>
+    <div class="imgP">
+        <img  src="{{ url_for('static', filename='img/prescriptionPadnondiabetic.png')}}" alt="1. करेला स्वरस /BitterGourd Juice/Karela Juice ( 15ml , 2 times a day )
+2. मेथी चूर्ण /Fenugreek seeds/Methi Powder ( 1 teaspoonful (around 5gm) , 2 times a day )
+3. आंवला स्वरस /Indian gooseberry/Amla Juice ( 15ml juice + 15ml water , 2 times a day )">
+
+    </div>
+    {% else %}
+    <p class="text-center">हार्ट की बीमारी कैसे होती है-Causes Of Heart Disease<br>हर किसी को हृदय रोग होने का खतरा है। लेकिन कुछ लोगों को इन कारणों से दिल की बीमारियां ज्यादा होती हैं।
+
+        हाई कोलेस्ट्रॉल (high cholesterol)
+        
+        हाई ब्लड प्रेशर या हाई बीपी (high bp)
+        
+        मोटापा के कारण (heart disease due to obesity)
+        
+        स्मोकिंग से (smoking and heart valve problems)
+        
+        शारीरिक गतिविधियों में कमी (lack of physical activity)
+        
+        डाइट का सही न होना (lack of balanced diet)
+        
+        55 वर्ष से अधिक की महिला को (menopause and heart disease)
+        
+        खराब जीवनशैली के कारण (bad lifestyle and heart disease)
+        
+        तनाव (stress and heart disease) .<br><br>दिल की बीमारी के लक्षण-Symptoms of heart disease <br>
+
+        छाती में फड़फड़ाहट (Fluttering in your chest)
+        दिल की धड़कनों का तेज होना (heart arrhythmias)
+        धीमी गति से धड़कनों का आना (bradycardia)
+        सीने में दर्द या बेचैनी (Chest pain)
+        सांस लेने में कठिनाई (breathing problem)
+        चक्कर आना (Dizziness)
+        सिर चकराना
+        बेहोशी (Fainting)
+        पसीना आना (sweating and difficulty breathing)
+        बगल में अचानक दर्द (Armpit Pain)
+        जल्दी थक जाना (fatigue) 
+        हाथों और पैरों में पसीना आना (excessive sweating causes)<br><br><big class="main">As your heart is not healthy , for being healthy again we gives you a short prescription</big></p>
+    <div class="imgP">
+        <img  src="{{ url_for('static', filename='img/prescriptionPadDiabetic.png')}}" alt="1. निशामलकी /Nishamakali ( 1 teaspoonful , 2 times a day )
+2. करेला स्वरस /BitterGourd Juice/Karela Juice ( 15ml , 2 times a day )
+3. मेथी चूर्ण /Fenugreek seeds/Methi Powder ( 1 teaspoonful (around 5gm) , 2 times a day )
+4. आंवला स्वरस /Indian gooseberry/Amla Juice ( 15ml juice + 15ml water , 2 times a day )
+5. त्रिफला चूर्ण /Triphla Powder ( 1 teaspoonful (3gm) , 2 times a day ) ">
+    <p class="text-center main">We advice you to consult our doctor for Proper prescription according to your condition .</p>
+    <div class="appdiv"><a class="btn app" href="/login">BOOK APPOINMENT</a></div>
+        
+    </div>
+    {% endif %}
+
+</div>
+        
+
+    {% endif %}

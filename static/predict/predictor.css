@@ -27,6 +27,15 @@
 
 }
 
+.heartpredict{
+    background-image: url("/static/img/heartpredictimg.png");
+background-position: right ;
+background-repeat: no-repeat;
+position: relative;
+
+}
+
+
 .btn{
     height: 20vh;
     margin: 2vh 2vw;
