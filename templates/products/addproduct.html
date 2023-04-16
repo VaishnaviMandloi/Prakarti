@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include '_message.html' %}
+    <div>
+    <div></div>
+        <div>
+            <h2>ADD A PRODUCT</h2>
+            {% from '_formhelpers.html' import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ render_field(form.name) }}
+                {{ render_field(form.price) }}
+                {{ render_field(form.discount) }}
+                {{ render_field(form.stock) }}
+
+                <label for="brand">Add a brand</label>
+                <select name="brand" id="brand"  required>
+                    {% if getproduct %}
+                    <option value="{{getproduct.brand_id}}" style="display: none;">{{getproduct.brand.name}}</option>
+                    {% for brand in brands %}
+                    <option value="{{brand.id}}">{{brand.name}}</option>
+                    {% endfor %}
+                   {% else %}
+                 <option value=""> Select A brand</option>
+                 {% for brand in brands %}
+                 <option value="{{brand.id}}">{{brand.name}}</option>
+                 {% endfor %}
+                 {% endif %}
+                </select>
+
+                <label for="category">Add a category</label>
+                <select name="category" id="category" class="form-control" required>
+                {% if getproduct %}
+                  <option value="{{getproduct.category_id}}" style="display: none;">{{getproduct.category.name}}</option>
+                  {% for category in categories %}
+                  <option value="{{category.id}}">{{category.name}}</option>
+                  {% endfor %}
+                 {% else %}
+                 <option value=""> Select A category</option>
+                 {% for category in categories %}
+                 <option value="{{category.id}}">{{category.name}}</option>
+                 {% endfor %}
+                 {% endif %}
+                </select>
+
+                {{ render_field(form.colors) }}
+                {{ render_field(form.discription, rows="10") }}
+
+                <div>
+                    <div>
+                        <div>{{ render_field(form.image_1)}}</div>
+                        <div>{{ render_field(form.image_2)}}</div>
+                        <div>{{ render_field(form.image_3)}}</div>
+                    </div>
+                </div>
+
+                <button type="submit">Add Product</button>
+
+            </form>
+        </div>
+        <div></div>
+    </div>
+</div>
+</body>
+</html>

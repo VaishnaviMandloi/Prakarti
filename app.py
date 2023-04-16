@@ -5,6 +5,13 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+import os
+import secrets
+
+from flask_wtf.file import FileAllowed ,  FileField , FileRequired
+from wtforms import Form , SubmitField ,FloatField , IntegerField , StringField , BooleanField , TextAreaField , validators
+from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
@@ -28,6 +35,13 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'prakarti'
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(basedir, 'static/images')
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
+patch_request_class(app)
 
 mysql = MySQL(app)
 
@@ -81,6 +95,51 @@ class Reject(db.Model):
     doctor = db.Column(db.String(100), nullable=False)
     date = db.Column(db.String(100), nullable=False)
     date2 = db.Column(db.String(100), nullable=False)
+
+#----------------- shop ---------------
+
+class Brand(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False , unique=True)
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False , unique=True)
+
+class Addproducts(Form):
+    name = StringField('Name' , [validators.DataRequired()])
+    price = FloatField('Price', [validators.DataRequired()])
+    discount = IntegerField('Discount', default=0)
+    stock = IntegerField('Stock', [validators.DataRequired()])
+    colors = StringField('Colors', [validators.DataRequired()])
+    discription = TextAreaField('Discription', [validators.DataRequired()])
+
+    image_1 = FileField('Image 1', validators=[FileRequired(), FileAllowed(['jpg','png','gif','jpeg'], 'Images only please')])
+    image_2 = FileField('Image 2', validators=[FileRequired(), FileAllowed(['jpg','png','gif','jpeg'], 'Images only please')])
+    image_3 = FileField('Image 3', validators=[FileRequired(), FileAllowed(['jpg','png','gif','jpeg'], 'Images only please')])
+
+class product(db.Model):
+    __seachbale__ = ['name','desc']
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+    price = db.Column(db.Numeric(10,2), nullable=False)
+    discount = db.Column(db.Integer, default=0)
+    stock = db.Column(db.Integer, nullable=False)
+    colors = db.Column(db.Text, nullable=False)
+    desc = db.Column(db.Text, nullable=False)
+    pub_date = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
+
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'),nullable=False)
+    category = db.relationship('Category',backref=db.backref('categories', lazy=True))
+
+    brand_id = db.Column(db.Integer, db.ForeignKey('brand.id'),nullable=False)
+    brand = db.relationship('Brand',backref=db.backref('brands', lazy=True))
+
+    image_1 = db.Column(db.String(150), nullable=False, default='image1.jpg')
+    image_2 = db.Column(db.String(150), nullable=False, default='image2.jpg')
+    image_3 = db.Column(db.String(150), nullable=False, default='image3.jpg')
+
+#----------------- /shop --------------
 
 @app.route('/login', methods =['GET', 'POST'])
 def login():
@@ -142,7 +201,7 @@ def admin_login():
 def admin():
     if session.get('username'):
         record = Appoinment.query.all()
-        flash("Accpted successfully" )
+        #flash('Accepted successfully')
         # flash("Rejected successfully" )
         return render_template("admin/index.html",record=record)
     else:
@@ -153,9 +212,9 @@ def home():
     
     if session.get('username'):
         record = Appoinment.query.all()
-        flash("Accpted successfully" )
+        #flash("Accepted successfully")
         # flash("Rejected successfully" )
-        return render_template("admin/index.html",record=record)
+        return render_template("admin/index.html",record=record )
     else:
             
         msg = "Login first"
@@ -184,7 +243,7 @@ def contact():
         c = Contact(name=name , phone = phone , email = email)
         db.session.add(c)
         db.session.commit()
-        flash("Contact  has been send successfully")  
+        flash("Contact has been send successfully")  
         return render_template("user.html")
     return render_template("user.html")
     
@@ -215,7 +274,7 @@ def appoinment():
         entry = Appoinment(Title = title , first_name = first_name , last_name= last_name,email=email , first_appoinment=first_appoinment , phone= phone , slot = slot, service_type = service_type, doctor = doctor , date = date,date2 = date2 )
         db.session.add(entry)
         db.session.commit()
-        flash("Appoinment Booking request has been send successfully")
+        flash(f'Appoinment Booking request has been send successfully')
     return render_template ("/appoinment.html")        
 
 
@@ -361,6 +420,66 @@ def heartresults():
             prediction ='Your heart have some defect'
     return render_template('heartdefectPredictorform.html' , prediction=prediction , Name=Name , age=age,sex=sex,cp=cp,trestbps=trestbps,chol=chol,fbs=fbs,restecg=restecg,thalach=thalach,exang=exang,oldpeak=oldpeak,slope=slope,ca=ca,thal=thal)
        
+# ---------------------------- shop ------------------------------
+
+@app.route('/addbrand',methods=['GET','POST'])
+def addbrand():
+    if request.method =="POST":
+        getbrand = request.form.get('brand')
+        brand = Brand(name=getbrand)
+        db.session.add(brand)
+        flash(f'The brand {getbrand} was added to your database','success')
+        db.session.commit()
+        return redirect(url_for('addbrand'))
+    return render_template('products/addbrand.html', title='Add brand',brands='brands')
+
+@app.route('/addcat',methods=['GET','POST'])
+def addcat():
+    if request.method =="POST":
+        getcat = request.form.get('category')
+        cat = Category(name=getcat)
+        db.session.add(cat)
+        flash(f'The brand {getcat} was added to your database','success')
+        db.session.commit()
+        return redirect(url_for('addcat'))
+    return render_template('products/addbrand.html')
+
+@app.route('/addproduct', methods=['GET','POST'])
+def addproduct():
+    form = Addproducts(request.form)
+    brands = Brand.query.all()
+    categories = Category.query.all()
+    if request.method=="POST"and 'image_1' in request.files:
+        name = form.name.data
+        price = form.price.data
+        discount = form.discount.data
+        stock = form.stock.data
+        colors = form.colors.data
+        desc = form.discription.data
+        brand = request.form.get('brand')
+        category = request.form.get('category')
+        image_1 = photos.save(request.files.get('image_1'), name=secrets.token_hex(10) + ".")
+        image_2 = photos.save(request.files.get('image_2'), name=secrets.token_hex(10) + ".")
+        image_3 = photos.save(request.files.get('image_3'), name=secrets.token_hex(10) + ".")
+        addproduct =  product(name=name,price=price,discount=discount,stock=stock,colors=colors,desc=desc,category_id=category,brand_id=brand,image_1=image_1,image_2=image_2,image_3=image_3)
+        db.session.add(addproduct)
+        flash(f'The product {name} was added in database','success')
+        db.session.commit()
+        return redirect(url_for('adminproduct'))
+    return render_template('products/addproduct.html', form=form, title='Add a Product',brands=brands,categories=categories) 
+
+@app.route('/adminproduct')
+def adminproduct():
+    if session.get('username'):
+        products = product.query.all()
+        return render_template('products/adminproduct.html' , title='Admin Product page' , products=products)
+    else:
+        return render_template("admin/login.html")
+    
+
+# ---------------------------- /shop -------------------------------
+
+
 
 if __name__ == '__main__':
 #     Session = sessionmaker(bind=engine)

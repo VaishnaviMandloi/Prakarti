@@ -27,30 +27,30 @@ SET time_zone = "+00:00";
 -- Table structure for table `accpted`
 --
 
-CREATE TABLE `accpted` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `country` varchar(50) DEFAULT NULL,
-  `type_of_room` varchar(50) DEFAULT NULL,
-  `bedding` varchar(50) DEFAULT NULL,
-  `number_of_room` varchar(50) DEFAULT NULL,
-  `check_out` varchar(50) DEFAULT NULL,
-  `check_in` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- CREATE TABLE `accpted` (
+--   `id` int(11) NOT NULL,
+--   `first_name` varchar(50) NOT NULL,
+--   `last_name` varchar(50) DEFAULT NULL,
+--   `email` varchar(50) DEFAULT NULL,
+--   `country` varchar(50) DEFAULT NULL,
+--   `type_of_room` varchar(50) DEFAULT NULL,
+--   `bedding` varchar(50) DEFAULT NULL,
+--   `number_of_room` varchar(50) DEFAULT NULL,
+--   `check_out` varchar(50) DEFAULT NULL,
+--   `check_in` varchar(50) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accpted`
 --
 
-INSERT INTO `accpted` (`id`, `first_name`, `last_name`, `email`, `country`, `type_of_room`, `bedding`, `number_of_room`, `check_out`, `check_in`) VALUES
-(35, 'Hamza', NULL, 'rjvideos9@gmail.com', 'Pakistani', 'Deluxe Room', 'Double', '3', '2021-09-17', '2021-09-14'),
-(36, 'Hamza', NULL, 'rjvideos9@gmail.com', 'Pakistani', 'Deluxe Room', 'Double', '3', '2021-09-17', '2021-09-14'),
-(37, 'marruhk', NULL, 'dsfkjafkdf@gmail.com', 'Pakistani', 'Superior Room', 'Single', '1', '2021-09-15', '2021-09-24'),
-(38, 'Hamza', NULL, 'rjvideos9@gmail.com', 'Pakistani', 'Deluxe Room', 'Double', '3', '2021-09-14', '2021-09-17'),
-(40, 'reject', NULL, 'frrgthi@gh.com', 'Pakistani', 'Superior Room', 'Single', '1', '2023-03-19', '2023-03-19'),
-(41, 'reject', NULL, 'frrgthi@gh.com', 'Pakistani', 'Superior Room', 'Double', '2', '2023-03-19', '2023-03-19');
+-- INSERT INTO `accpted` (`id`, `first_name`, `last_name`, `email`, `country`, `type_of_room`, `bedding`, `number_of_room`, `check_out`, `check_in`) VALUES
+-- (35, 'Hamza', NULL, 'rjvideos9@gmail.com', 'Pakistani', 'Deluxe Room', 'Double', '3', '2021-09-17', '2021-09-14'),
+-- (36, 'Hamza', NULL, 'rjvideos9@gmail.com', 'Pakistani', 'Deluxe Room', 'Double', '3', '2021-09-17', '2021-09-14'),
+-- (37, 'marruhk', NULL, 'dsfkjafkdf@gmail.com', 'Pakistani', 'Superior Room', 'Single', '1', '2021-09-15', '2021-09-24'),
+-- (38, 'Hamza', NULL, 'rjvideos9@gmail.com', 'Pakistani', 'Deluxe Room', 'Double', '3', '2021-09-14', '2021-09-17'),
+-- (40, 'reject', NULL, 'frrgthi@gh.com', 'Pakistani', 'Superior Room', 'Single', '1', '2023-03-19', '2023-03-19'),
+-- (41, 'reject', NULL, 'frrgthi@gh.com', 'Pakistani', 'Superior Room', 'Double', '2', '2023-03-19', '2023-03-19');
 
 -- --------------------------------------------------------
 
@@ -68,9 +68,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `name`, `password`) VALUES
-(1, 'hamza', '123'),
-(2, 'ahmad', '1122');
+-- INSERT INTO `admin` (`id`, `name`, `password`) VALUES
+-- (1, 'hamza', '123'),
+-- (2, 'ahmad', '1122');
 
 -- --------------------------------------------------------
 
@@ -78,22 +78,22 @@ INSERT INTO `admin` (`id`, `name`, `password`) VALUES
 -- Table structure for table `appoinment`
 --
 
-CREATE TABLE `appoinment` (
-  `id` int(11) NOT NULL,
-  `Title` varchar(50) DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `nationality` varchar(50) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `type_of_room` varchar(50) DEFAULT NULL,
-  `Bedding_Type` varchar(50) DEFAULT NULL,
-  `Number_of_rooms` varchar(50) DEFAULT NULL,
-  `check_in` varchar(50) DEFAULT NULL,
-  `check_out` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- CREATE TABLE `appoinment` (
+--   `id` int(11) NOT NULL,
+--   `Title` varchar(50) DEFAULT NULL,
+--   `first_name` varchar(50) DEFAULT NULL,
+--   `last_name` varchar(50) DEFAULT NULL,
+--   `email` varchar(50) DEFAULT NULL,
+--   `nationality` varchar(50) DEFAULT NULL,
+--   `phone` varchar(20) DEFAULT NULL,
+--   `type_of_room` varchar(50) DEFAULT NULL,
+--   `Bedding_Type` varchar(50) DEFAULT NULL,
+--   `Number_of_rooms` varchar(50) DEFAULT NULL,
+--   `check_in` varchar(50) DEFAULT NULL,
+--   `check_out` varchar(50) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
+-- --
 -- Dumping data for table `appoinment`
 --
 
