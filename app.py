@@ -11,6 +11,7 @@ import secrets
 from flask_wtf.file import FileAllowed ,  FileField , FileRequired
 from wtforms import Form , SubmitField ,FloatField , IntegerField , StringField , BooleanField , TextAreaField , validators
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+from flask_msearch import Search
 
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
@@ -30,6 +31,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 app.secret_key = 'xyzsdfg'
+
+
+search = Search()
+search.init_app(app)
   
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -111,7 +116,7 @@ class Addproducts(Form):
     price = FloatField('Price', [validators.DataRequired()])
     discount = IntegerField('Discount', default=0)
     stock = IntegerField('Stock', [validators.DataRequired()])
-    colors = StringField('Colors', [validators.DataRequired()])
+    flavours = StringField('Flavours', [validators.DataRequired()])
     discription = TextAreaField('Discription', [validators.DataRequired()])
 
     image_1 = FileField('Image 1', validators=[FileRequired(), FileAllowed(['jpg','png','gif','jpeg'], 'Images only please')])
@@ -125,7 +130,7 @@ class product(db.Model):
     price = db.Column(db.Numeric(10,2), nullable=False)
     discount = db.Column(db.Integer, default=0)
     stock = db.Column(db.Integer, nullable=False)
-    colors = db.Column(db.Text, nullable=False)
+    flavours = db.Column(db.Text, nullable=False)
     desc = db.Column(db.Text, nullable=False)
     pub_date = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
 
@@ -422,6 +427,7 @@ def heartresults():
        
 # ---------------------------- shop ------------------------------
 
+#------------------ admin ------------------------
 @app.route('/addbrand',methods=['GET','POST'])
 def addbrand():
     if request.method =="POST":
@@ -454,14 +460,14 @@ def addproduct():
         price = form.price.data
         discount = form.discount.data
         stock = form.stock.data
-        colors = form.colors.data
+        flavours = form.flavours.data
         desc = form.discription.data
         brand = request.form.get('brand')
         category = request.form.get('category')
         image_1 = photos.save(request.files.get('image_1'), name=secrets.token_hex(10) + ".")
         image_2 = photos.save(request.files.get('image_2'), name=secrets.token_hex(10) + ".")
         image_3 = photos.save(request.files.get('image_3'), name=secrets.token_hex(10) + ".")
-        addproduct =  product(name=name,price=price,discount=discount,stock=stock,colors=colors,desc=desc,category_id=category,brand_id=brand,image_1=image_1,image_2=image_2,image_3=image_3)
+        addproduct =  product(name=name,price=price,discount=discount,stock=stock,flavours=flavours,desc=desc,category_id=category,brand_id=brand,image_1=image_1,image_2=image_2,image_3=image_3)
         db.session.add(addproduct)
         flash(f'The product {name} was added in database','success')
         db.session.commit()
@@ -475,7 +481,59 @@ def adminproduct():
         return render_template('products/adminproduct.html' , title='Admin Product page' , products=products)
     else:
         return render_template("admin/login.html")
-    
+
+@app.route('/brands')
+def brands():
+    brands = Brand.query.order_by(Brand.id.desc()).all()
+    return render_template('products/adminbrand.html', title='brands',brands=brands)
+
+
+@app.route('/categories')
+def categories():
+    categories = Category.query.order_by(Category.id.desc()).all()
+    return render_template('products/adminbrand.html', title='categories',categories=categories)
+
+#----------------------------- /admin ----------------------------
+
+def brands():
+    brands = Brand.query.join(product, (Brand.id == product.brand_id)).all()
+    return brands
+
+def categories():
+    categories = Category.query.join(product,(Category.id == product.category_id)).all()
+    return categories
+
+@app.route('/shop')
+def shop():
+    page = request.args.get('page',1, type=int)
+    products = product.query.filter(product.stock > 0).order_by(product.id.desc()).paginate(page=page, per_page=8)
+    return render_template('products/index.html', products=products,brands=brands(),categories=categories())
+
+@app.route('/result')
+def result():
+    searchword = request.args.get('q')
+    products = product.query.msearch(searchword, fields=['name','desc'] , limit=6)
+    return render_template('products/result.html',products=products,brands=brands(),categories=categories())
+
+@app.route('/product/<int:id>')
+def single_page(id):
+    Addproduct = product.query.get_or_404(id)
+    return render_template('products/single_page.html',product=Addproduct,brands=brands(),categories=categories())
+
+@app.route('/brand/<int:id>')
+def get_brand(id):
+    page = request.args.get('page',1, type=int)
+    get_brand = Brand.query.filter_by(id=id).first_or_404()
+    brand = product.query.filter_by(brand=get_brand).paginate(page=page, per_page=8)
+    return render_template('products/index.html',brand=brand,brands=brands(),categories=categories(),get_brand=get_brand)
+
+
+@app.route('/categories/<int:id>')
+def get_category(id):
+    page = request.args.get('page',1, type=int)
+    get_cat = Category.query.filter_by(id=id).first_or_404()
+    get_cat_prod = product.query.filter_by(category=get_cat).paginate(page=page, per_page=8)
+    return render_template('products/index.html',get_cat_prod=get_cat_prod,brands=brands(),categories=categories(),get_cat=get_cat)
 
 # ---------------------------- /shop -------------------------------
 

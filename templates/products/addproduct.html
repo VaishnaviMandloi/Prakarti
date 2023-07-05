@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends '/products/baseadminproduct.html' %}
+
+{% block body %}
     {% include '_message.html' %}
-    <div>
+    <div class="container">
     <div></div>
         <div>
             <h2>ADD A PRODUCT</h2>
             {% from '_formhelpers.html' import render_field %}
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data" class="form-group" >
                 {{ render_field(form.name) }}
                 {{ render_field(form.price) }}
                 {{ render_field(form.discount) }}
                 {{ render_field(form.stock) }}
 
                 <label for="brand">Add a brand</label>
-                <select name="brand" id="brand"  required>
+                <select name="brand" id="brand" class="form-control" required>
                     {% if getproduct %}
                     <option value="{{getproduct.brand_id}}" style="display: none;">{{getproduct.brand.name}}</option>
                     {% for brand in brands %}
@@ -49,7 +43,7 @@
                  {% endif %}
                 </select>
 
-                {{ render_field(form.colors) }}
+                {{ render_field(form.flavours) }}
                 {{ render_field(form.discription, rows="10") }}
 
                 <div>
@@ -60,12 +54,12 @@
                     </div>
                 </div>
 
-                <button type="submit">Add Product</button>
+                <button type="submit" class="btn btn-primary" >Add Product</button>
 
             </form>
         </div>
         <div></div>
     </div>
 </div>
-</body>
-</html>
+
+{% endblock body %}

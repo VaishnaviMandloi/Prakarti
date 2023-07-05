@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!-- Bootstrap Styles-->
+    <!-- <link href="{{ url_for('static', filename='assets/css/bootstrap.css')}}" rel="stylesheet" /> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    {% include 'products/navbar.html' %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6" id="b_image">
+                <img src="{{url_for('static',filename='images/' + product.image_1)}}" alt="{{product.name}}" width="400" >
+            </div>
+            <div class="col-md-6">
+                <h4>Product name: {{product.name}} </h4>
+                <hr>
+                <p>Product price: Rs. {{product.price}}</p>
+                <hr>
+                {% if product.discount > 0 %}
+                <p>Discount: {{product.discount}} % </p>
+                {% endif %}
+                <hr>
+                <b>Product discription</b>
+                <p>{{product.desc}}</p>
+
+                    <input type="hidden" name="product_id" value="{{product.id}}">
+                    <button type="submit" class="btn btn-sm btn-warning">Add to Cart</button>
+                    <label for="quantity">Quantity: </label>
+                    <input type="number" name="quantity" value="1" min="1" max="{{product.stock}}">
+                    
+                    {% set flavours = product.flavours.split(',') %}
+                    <label for="flavours">Flavours: </label>
+                      <select name="flavours" id="flavours">
+                          {% for flavour in flavours %}
+                          {% set col = flavour.split(':') %}
+                          <option value="{{col[0]}}">{{col[0] | capitalize }}</option>
+                          {% endfor %}
+                      </select>
+
+            
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12" id="s_image">
+                <img src="{{url_for('static',filename='images/'+ product.image_1)}}" alt="{{product.name}}" width="100" height="100">
+                <img src="{{url_for('static',filename='images/'+ product.image_2)}}" alt="{{product.name}}" width="100" height="100" class="ml-5">
+                <img src="{{url_for('static',filename='images/'+ product.image_3)}}" alt="{{product.name}}" width="100" height="100" class="ml-5">
+            </div>
+        </div>
+       
+    </div>
+    
+    <script>
+       var b_image = document.getElementById('b_image');
+       var s_image = document.getElementById('s_image').getElementsByTagName('img');
+        for(var i = 0; i < s_image.length; i++){
+    
+            s_image[i].addEventListener('click', full_image);
+        }
+        function full_image(){
+            var ImageSRC = this.getAttribute('src');
+            b_image.innerHTML = "<img src=" + ImageSRC + " width='400' >";
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>
