@@ -343,7 +343,7 @@ def delete_reject(id):
 
 @app.route('/predictor')
 def predictor():
-    return render_template('Predictor.html')
+    return render_template('predictor.html')
 
 @app.route('/predictdiabetes')
 def predict_diabetic():
