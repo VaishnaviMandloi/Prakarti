@@ -495,6 +495,11 @@ def categories():
 
 #----------------------------- /admin ----------------------------
 
+def api_response():
+    from flask import jsonify
+    if request.method == 'POST':
+        return jsonify(**request.json)
+
 def brands():
     brands = Brand.query.join(product, (Brand.id == product.brand_id)).all()
     return brands
