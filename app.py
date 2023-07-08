@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/prakarti"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql:///prakarti.sql"
 app.config['SECRET_KEY'] = "random string"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
