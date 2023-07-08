@@ -31,6 +31,7 @@ pdfkit==0.6.1
 pipenv==2018.11.26
 pycparser==2.19
 pylint==2.4.4
+pymysql
 python-dateutil==2.8.1
 python-editor==1.0.4
 six==1.14.0
