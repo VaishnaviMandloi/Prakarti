@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql:///prakarti.sql"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://sql6.freesqldatabase.com/sql6631713"
 app.config['SECRET_KEY'] = "random string"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
@@ -36,10 +36,10 @@ app.secret_key = 'xyzsdfg'
 search = Search()
 search.init_app(app)
   
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'prakarti'
+app.config['MYSQL_HOST'] = 'sql6.freesqldatabase.com'
+app.config['MYSQL_USER'] = 'sql6631713'
+app.config['MYSQL_PASSWORD'] = 'gBvw8gm1Ba'
+app.config['MYSQL_DB'] = 'sql6631713'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
