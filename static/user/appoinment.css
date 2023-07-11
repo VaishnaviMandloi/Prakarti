@@ -4,3 +4,13 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.row{
+    margin-bottom: 50px;
+}
+
+@media (max-width:600px){
+    #contact {
+        font-size: 6vw;
+    }
+}
