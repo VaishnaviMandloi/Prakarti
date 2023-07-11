@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 400px;
 }
 
 #heartformSec{
@@ -22,7 +23,7 @@
     background-position: center ;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 130vh;
+    height: 150vw;
     position: relative;
     padding: 12px;
     display: flex;
@@ -55,6 +56,7 @@ form{
 
 .dform-content{
     padding: 0 10px;
+
 }
 
 label{
@@ -233,3 +235,52 @@ table{
 
 }
 
+@media screen and (max-width:800px){
+    form{
+        width: auto;
+    }
+    .form-content{
+        display: block;
+    }
+    #formSec{
+        min-height: 800px;
+    }
+    .text-center{
+        padding: 5px;
+        margin: 5px;
+    }
+    .f1-table{
+        display: flex;
+        flex-direction: row;
+    }
+    th,tr{
+        display: flex;
+        flex-direction: column;
+    }
+    .n , .th1{
+        display: none;
+    }
+    .intr td{
+        padding: 9.44px 5px;
+        height: 50px;
+    }
+    .inth th{
+        height: 50px;
+    }
+    .imgP{
+        width: 90%;
+        margin: 0;
+        padding: 3vh 0vh;
+        background-image: none;
+    }
+
+    #heartformSec{
+        height: 1760px;
+    }
+}
+
+@media screen and (max-width:450px){
+    img{
+        width: 100%;
+    }
+}

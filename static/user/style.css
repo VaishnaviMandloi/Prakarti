@@ -298,3 +298,9 @@ span.psw {
         width: 100%;
     }
 }
+
+#contact{
+    padding: 30vh 20vw;
+    min-height: 80vh;
+    font-size: 3vw;
+}

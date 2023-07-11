@@ -48,7 +48,7 @@ position: relative;
     padding: 10px 12px;
     margin: 32px 6px;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 3vw;
     background-color:#4e8958 ;
     border-radius: 22px;
     font-weight: bold;
@@ -68,3 +68,13 @@ position: relative;
     border: 2px solid #4e8958;
 
 }
+
+@media screen and (max-width : 1247px){
+    .diapredict{
+        background-image: none;
+    }
+    .heartpredict{
+        background-image: none;
+    }
+}
+
