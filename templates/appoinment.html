@@ -31,12 +31,12 @@
             </div>
 
         </nav>
-        {% for message in get_flashed_messages() %}
+        <!--{% for message in get_flashed_messages() %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{message}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        {% endfor %}
+        {% endfor %}-->
         <div id="page-wrapper">
             <div class="app-div" id="page-inner">
                 <div class="row">
@@ -132,10 +132,10 @@
                                         <label>Service Type</label>
                                         <select name="service_type" class="form-control" required>
                                             <option value selected></option>
-                                            <option value="Single">Panchkarma</option>
-                                            <option value="Double">Nasya</option>
-                                            <option value="Triple">Vasti</option>
-                                            <option value="Quad">Swedan</option>
+                                            <option value="Panchkarma">Panchkarma</option>
+                                            <option value="Nasya">Nasya</option>
+                                            <option value="Vasti">Vasti</option>
+                                            <option value="Swedan">Swedan</option>
                                             <option value="Other">Other</option>
 
 

@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://sql6.freesqldatabase.com/sql6631713"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://sql6631713:gBvw8gm1Ba@sql6.freesqldatabase.com:3306/sql6631713"
 app.config['SECRET_KEY'] = "random string"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
@@ -131,7 +131,7 @@ class product(db.Model):
     discount = db.Column(db.Integer, default=0)
     stock = db.Column(db.Integer, nullable=False)
     flavours = db.Column(db.Text, nullable=False)
-    desc = db.Column(db.Text, nullable=False)
+    descrip = db.Column(db.Text, nullable=False)
     pub_date = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
 
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'),nullable=False)
@@ -461,13 +461,13 @@ def addproduct():
         discount = form.discount.data
         stock = form.stock.data
         flavours = form.flavours.data
-        desc = form.discription.data
+        descrip = form.discription.data
         brand = request.form.get('brand')
         category = request.form.get('category')
         image_1 = photos.save(request.files.get('image_1'), name=secrets.token_hex(10) + ".")
         image_2 = photos.save(request.files.get('image_2'), name=secrets.token_hex(10) + ".")
         image_3 = photos.save(request.files.get('image_3'), name=secrets.token_hex(10) + ".")
-        addproduct =  product(name=name,price=price,discount=discount,stock=stock,flavours=flavours,desc=desc,category_id=category,brand_id=brand,image_1=image_1,image_2=image_2,image_3=image_3)
+        addproduct =  product(name=name,price=price,discount=discount,stock=stock,flavours=flavours,descrip=descrip,category_id=category,brand_id=brand,image_1=image_1,image_2=image_2,image_3=image_3)
         db.session.add(addproduct)
         flash(f'The product {name} was added in database','success')
         db.session.commit()
@@ -517,7 +517,7 @@ def shop():
 @app.route('/result')
 def result():
     searchword = request.args.get('q')
-    products = product.query.msearch(searchword, fields=['name','desc'] , limit=6)
+    products = product.query.msearch(searchword, fields=['name','descrip'] , limit=6)
     return render_template('products/result.html',products=products,brands=brands(),categories=categories())
 
 @app.route('/product/<int:id>')
