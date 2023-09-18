@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://if0_35052979:cxG61oljbRaAg@sql310.infinityfree.com:3306/if0_35052979_Prakrati"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://if0_35052979:cxG61oljbRaAg@123.45.67.89:3306/if0_35052979_Prakrati"
 app.config['SECRET_KEY'] = "random string"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
