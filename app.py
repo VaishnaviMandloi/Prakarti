@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://if0_35052979:cxG61oljbRaAg@123.45.67.89:3306/if0_35052979_Prakrati"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://sql12649241:FSfbsXJjJJ@sql12.freemysqlhosting.net:3306/sql12649241"
 app.config['SECRET_KEY'] = "random string"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
@@ -36,10 +36,10 @@ app.secret_key = 'xyzsdfg'
 search = Search()
 search.init_app(app)
   
-app.config['MYSQL_HOST'] = 'sql310.infinityfree.com'
-app.config['MYSQL_USER'] = 'if0_35052979'
-app.config['MYSQL_PASSWORD'] = 'cxG61oljbRaAg'
-app.config['MYSQL_DB'] = 'if0_35052979_Prakrati'
+app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql12649241'
+app.config['MYSQL_PASSWORD'] = 'FSfbsXJjJJ'
+app.config['MYSQL_DB'] = 'sql12649241'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
