@@ -132,7 +132,7 @@ class product(db.Model):
     stock = db.Column(db.Integer, nullable=False)
     flavours = db.Column(db.Text, nullable=False)
     descrip = db.Column(db.Text, nullable=False)
-    pub_date = db.Column(db.Timestamp, nullable=False,default=timestamp.utcnow)
+    pub_date = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
 
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'),nullable=False)
     category = db.relationship('Category',backref=db.backref('categories', lazy=True))
